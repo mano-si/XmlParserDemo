@@ -1,0 +1,13 @@
+<employees>
+
+<employee>
+
+<name>Marigold</name> <age>30</age> <designation>Software Engineer</designation> </employee> <employee>
+
+<name>Nova</name> <age>40</age> <designation>Senior Developer</designation> </employee> <employee>
+
+<name>Elsie</name>
+
+<age>35</age> <designation>Project Manager</designation> <address>
+
+<doorNo>20</doorNo> <street>Hibiscus Way</street> <town>Tustin</town> <state>Texas</state> </address> </employee> </employees>
