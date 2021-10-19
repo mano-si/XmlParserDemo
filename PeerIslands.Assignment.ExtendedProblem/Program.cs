@@ -19,7 +19,7 @@ namespace PeerIslands.Assignment.ExtendedProblem
 
             var employeeService = _serviceProvider.GetService<IEmployeeService>();
 
-            employeeService.AddEmployees<ExtendedEmployees>(inputXmlExtended);
+            employeeService.AddEmployees<ExtentedEmployee>(inputXmlExtended);
         }
     }
 }

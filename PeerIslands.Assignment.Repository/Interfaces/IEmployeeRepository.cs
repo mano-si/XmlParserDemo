@@ -4,8 +4,8 @@ namespace PeerIslands.Assignment.Repository.Interfaces
 {
     public interface IEmployeeRepository
     {
-        void AddEmployees<T>(T employees); 
-            //where T : BaseEmployees<Employee>;
+        void AddEmployees<T>(Employees<T> employees)
+            where T : Employee;
 
         void DeleteEmployee(int id);
     }

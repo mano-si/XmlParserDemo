@@ -23,7 +23,7 @@ namespace PeerIslands.Assignment.Tests
                                     <designation>Developer</designation> 
                                     </employee> 
                                     </employees> ";
-        private Employees _validEmployees;
+        private Employees<Employee> _validEmployees;
 
         [SetUp]
         public void Setup()
@@ -38,25 +38,25 @@ namespace PeerIslands.Assignment.Tests
         [Test]
         public void AddEmployees_WhenInValidXml_ShouldReturn()
         {
-            Assert.Throws<InvalidOperationException>(() => _employeeService.AddEmployees<Employees>("xyz"));
+            Assert.Throws<InvalidOperationException>(() => _employeeService.AddEmployees<Employee>("xyz"));
         }
 
         [Test]
         public void AddEmployees_WhenValidXml_ShouldCallRepo()
         {
-            _employeeService.AddEmployees<Employees>(_validXmlInput);
+            _employeeService.AddEmployees<Employee>(_validXmlInput);
 
             _employeeRepository.Received().AddEmployees(_validEmployees);
         }
 
         private void SetUpMocks()
         {
-            _validEmployees = new Employees() { ListOfEmployees = new List<Employee>() { new Employee() { Name = "Mark", Age = 23, Designation = "Engineer" } } };
+            _validEmployees = new Employees<Employee>() { ListOfEmployees = new List<Employee>() { new Employee() { Name = "Mark", Age = 23, Designation = "Engineer" } } };
             _xmlParser
-                .When(x => x.Deserialize<Employees>(Arg.Is<string>(x => x != _validXmlInput)))
+                .When(x => x.Deserialize<Employees<Employee>>(Arg.Is<string>(x => x != _validXmlInput)))
                 .Do(x => { throw new InvalidOperationException(); });
 
-            _xmlParser.Deserialize<Employees>(_validXmlInput).Returns(_validEmployees);
+            _xmlParser.Deserialize<Employees<Employee>>(_validXmlInput).Returns(_validEmployees);
 
         }
     }

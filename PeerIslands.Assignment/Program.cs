@@ -18,7 +18,7 @@ namespace PeerIslands.Assignment
             ServiceProvider _serviceProvider = DependencyConfig.Register();
 
             var employeeService = _serviceProvider.GetService<IEmployeeService>();
-            employeeService.AddEmployees<Employees>(inputXml);
+            employeeService.AddEmployees<Employee>(inputXml);
         }
     }
 }

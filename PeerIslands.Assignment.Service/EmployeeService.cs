@@ -18,11 +18,11 @@ namespace PeerIslands.Assignment.Service
         }
 
         public void AddEmployees<T>(string xml)
-            //where T: BaseEmployees<Employee>
+                where T : Employee
         {
-            var employees = _xmlParser.Deserialize<T>(xml);
+            var employees = _xmlParser.Deserialize<Employees<T>>(xml);
 
-            _employeeRepository.AddEmployees<T>(employees);
+            _employeeRepository.AddEmployees(employees);
         }
 
         public void DeleteEmployee(int id)

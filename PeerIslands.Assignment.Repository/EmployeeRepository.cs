@@ -18,12 +18,12 @@ namespace PeerIslands.Assignment.Repository
             _xmlParser = xmlParser;
         }
 
-        public void AddEmployees<T>(T employees) 
-            //where T : BaseEmployees<Employee>
+        public void AddEmployees<T>(Employees<T> employees) 
+            where T : Employee
         {
             try
             {
-                string xml = _xmlParser.Serialize<T>(employees);
+                string xml = _xmlParser.Serialize<Employees<T>>(employees);
                 File.WriteAllText(OUTPUT_PATH, xml);
 
             }
